@@ -1,3 +1,4 @@
+//Description: This program uses the mathematical definition of a triangle to test for whether three given sides could form a triangle.
 #include <cs50.h>
 #include <stdio.h>
 
