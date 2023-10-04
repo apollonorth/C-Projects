@@ -1,0 +1,48 @@
+//Description: This program takes a number of weeks and how many hours were spent doing something each week, and will return 
+//either the total hours spent or average hours per week based on user input.
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+
+float calc_hours(int hours[], int weeks, char output);
+
+int main(void)
+{
+    int weeks = get_int("Number of weeks: ");
+    int hours[weeks];
+
+    for (int i = 0; i < weeks; i++)
+    {
+        hours[i] = get_int("Week %i Hours: ", i);
+    }
+
+    char output;
+    do
+    {
+        output = toupper(get_char("Enter T for total hours, A for average hours per week: "));
+    }
+    while (output != 'T' && output != 'A');
+
+    printf("%.1f hours\n", calc_hours(hours, weeks, output));
+}
+
+float calc_hours(int hours[], int weeks, char output)
+{
+    int sum = 0;
+    for(int i = 0; i < weeks; i++)
+    {
+        sum += hours[i];
+    }
+    if (output == 'T')
+    {
+        return sum;
+    }
+    else if (output == 'A')
+    {
+        return ((float) sum / weeks);
+    }
+    else
+    {
+        return 1;
+    }
+}
